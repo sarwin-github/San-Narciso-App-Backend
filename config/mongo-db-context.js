@@ -9,7 +9,7 @@ let mongoConnectionLocal = {
 
 // Development database from mongolab
 let mongoConnectionOnline = {
-	'url': `mongodb://${process.env.MLabDBUser}:${process.env.MLabDBPassword}@${process.env.MLabDB}`
+	'url': `mongodb+srv://database-user:${process.env.MLabDBPassword}@${process.env.MLabDB}?retryWrites=true&w=majority`
 };
 
 
@@ -20,10 +20,8 @@ module.exports.pickEnv = (env, app) => {
 	mongoose.Promise = global.Promise;
 	switch (env) {
 	    case 'dev':
-	    	let dev_options = { useMongoClient: true }
-
-	    	app.set('port', process.env.PORT || 5050);
-	        mongoose.connect(mongoConnectionOnline.url, dev_options,
+	    	app.set('port', process.env.PORT || 6060);
+	        mongoose.connect(mongoConnectionOnline.url,
 	        	err => { if(err) { console.log(err); }}); 
 	        break;
 		case 'local':

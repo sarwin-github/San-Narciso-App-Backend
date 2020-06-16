@@ -27,7 +27,7 @@ const databaseConfig = require('./config/mongo-db-context');
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Set database connection
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-const env = process.env.NODE_EN || 'local';
+const env = process.env.NODE_EN || 'dev';
 console.log(`NODE_ENV: ${env}`);
 databaseConfig.pickEnv(env, app);
 		
@@ -46,7 +46,7 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard());
 
 app.use(cookieParser());
-app.use(validator()); // Validator is a backend validator by express 
+//app.use(validator()); // Validator is a backend validator by express 
 app.use(flash()); // Flash can be use to store messages or notification on session
 
 app.use(bodyParser.json());
