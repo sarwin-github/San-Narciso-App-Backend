@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema({
 	password : { type: String },
 	name     : { type: String },
 	address  : { type: String },
-	phone    : { type: String }
+	phone    : { type: String },
+	role     : { type: String },
+	municipality: { type: String },
+	
 });
 
 userSchema.methods.generateHash = function(password){

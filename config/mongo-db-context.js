@@ -9,7 +9,7 @@ let mongoConnectionLocal = {
 
 // Development database from mongolab
 let mongoConnectionOnline = {
-	'url': `mongodb+srv://database-user:${process.env.MLabDBPassword}@${process.env.MLabDB}?retryWrites=true&w=majority`
+	'url': `mongodb://${process.env.MLabDBUser}:${process.env.MLabDBPassword}@${process.env.MLabDB}`
 };
 
 

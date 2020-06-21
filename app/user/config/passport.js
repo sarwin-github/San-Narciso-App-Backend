@@ -21,6 +21,7 @@ passport.use('passport-login', new LocalStrategy({
         req.checkBody('email', 'Email is required.').notEmpty();
         req.checkBody('email', 'Invalid email format').isEmail();
         req.checkBody('password', 'Password is required.').notEmpty();
+        
         let errors = req.validationErrors();
 
         if (errors) {
@@ -101,6 +102,8 @@ passport.use('passport-signup', new LocalStrategy({
         newUser.name     = req.body.name;
         newUser.address  = req.body.address;
         newUser.phone    = req.body.phone;
+        newUser.role     = req.body.role;
+        newUser.municipality = req.body.municipality;
 
         newUser.save(err => {
           if(err){

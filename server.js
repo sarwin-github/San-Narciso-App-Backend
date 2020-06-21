@@ -46,7 +46,7 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard());
 
 app.use(cookieParser());
-//app.use(validator()); // Validator is a backend validator by express 
+app.use(validator()); // Validator is a backend validator by express 
 app.use(flash()); // Flash can be use to store messages or notification on session
 
 app.use(bodyParser.json());
