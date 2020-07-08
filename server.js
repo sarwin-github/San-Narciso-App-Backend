@@ -23,7 +23,7 @@ const csurf          = require('./config/initialize-csurf');
 const routes         = require('./config/routes-initialization');
 const errorHandler   = require('./config/error-handler');
 const databaseConfig = require('./config/mongo-db-context');
-
+const cors           = require('cors');
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Set database connection
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -56,6 +56,7 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs'); ///Set the view engine to EJS
 app.set('views', __dirname + '/views'); ///Set the views directory
 app.use(express.static(__dirname));
+
 //app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -75,14 +76,8 @@ app.use((req, res, next) => localVariables.initializeVariable(req, res, next));
 // Set up CORS
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /* Allow CORS */
-cors.initializeCORS(app);
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Anti csurf attack protection
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* uncomment if you want to add csurf protection, 
-   csurf will be stored in cookies and local variable  
-csurf.initializeCSURF(app); */
+//cors.initializeCORS(app);
+app.use(cors()); // <---- use cors middleware
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Set and Initialize Routes
