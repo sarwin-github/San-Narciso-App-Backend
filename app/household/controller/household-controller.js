@@ -62,7 +62,7 @@ module.exports.addNewHousehold = (req, res) => {
 	
 	household.save((err) => {
 		if(err){
-		    return res.status(500).json({success: false, message: 'Something went wrong.'});
+		    return res.status(500).json({success: false, error: err, message: 'Something went wrong with the server.'});
 		}
 
 	    res.status(200).json({
