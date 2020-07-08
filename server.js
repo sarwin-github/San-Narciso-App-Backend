@@ -18,7 +18,7 @@ const passport       = require('passport');
 
 // Local modules for config
 const localVariables = require('./config/initialize-local-variables');
-const cors           = require('./config/initialize-cors');
+//const cors           = require('./config/initialize-cors');
 const csurf          = require('./config/initialize-csurf');
 const routes         = require('./config/routes-initialization');
 const errorHandler   = require('./config/error-handler');
