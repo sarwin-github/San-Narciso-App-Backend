@@ -59,6 +59,8 @@ module.exports.addNewHousehold = (req, res) => {
 	household.barangay     = req.body.barangay;
 	household.city         = req.body.city;
 	household.province     = req.body.province;
+
+	household_inhabitants  = [...req.body.household_inhabitants]
 	
 	household.save((err) => {
 		if(err){
