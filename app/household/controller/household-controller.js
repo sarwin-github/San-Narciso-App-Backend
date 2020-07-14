@@ -14,7 +14,7 @@ const async     = require('async');
 					description: "return list of households"
 */
 module.exports.getHouseholds = (req, res) => {
-	let query = Household.find({}).select({'__v': 0});
+	let query = Household.find({}).select({'__v': 0}).populate('household_head');
 
 	query.exec((err, households) => {
 		if(err){
@@ -55,13 +55,17 @@ module.exports.addNewHousehold = (req, res) => {
 	household.household_head   = req.body.household_head;
 	household.household_name   = req.body.household_name;
 	household.household_number = req.body.household_number;
-	household.street       = req.body.street;
-	household.barangay     = req.body.barangay;
-	household.city         = req.body.city;
-	household.province     = req.body.province;
+	household.street   = req.body.street;
+	household.barangay = req.body.barangay;
+	household.city     = req.body.city;
+	household.province = req.body.province;
 
-	household_inhabitants  = [...req.body.household_inhabitants]
-	
+	req.body.household_inhabitants.forEach(el => {
+		household.household_inhabitants.push(el)
+	});
+
+	console.log(req.body.household_inhabitants)
+
 	household.save((err) => {
 		if(err){
 		    return res.status(500).json({success: false, error: err, message: 'Something went wrong with the server.'});
@@ -161,6 +165,7 @@ module.exports.updateHouseholdDetail = (req, res) => {
 	    	household.barangay     = req.body.barangay;
 	    	household.city         = req.body.city;
 	    	household.province     = req.body.province;
+	    	household_inhabitants  = req.body.household_inhabitants;
 
 	    	household.save(err => {
 	    		callback(err, household);
