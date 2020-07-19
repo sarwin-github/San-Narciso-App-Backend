@@ -18,7 +18,10 @@ const residentSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Resident'
 	},
-
+	non_resident_officer_in_charge : {
+        type: Schema.Types.ObjectId,
+        ref: 'NonResident'
+	},
 });
 
 module.exports = mongoose.model('Blotter', residentSchema);
