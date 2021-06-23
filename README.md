@@ -1,6 +1,9 @@
 # San Narciso | San Andress Municipality Backend
 San Narciso | San Andress Municipality Backend
 
+## Database 
+MongoDB - MongoDB atlas (Free Cluster)
+
 ## How to use
 After cloning do NPM install. <br>
 Then in order to use mongo database set up your credentials to a separate .env file along with the server.js file
