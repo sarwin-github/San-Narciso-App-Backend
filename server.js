@@ -41,7 +41,7 @@ app.disable('x-powered-by');
 app.use(helmet());
 app.use(helmet.hidePoweredBy({ setTo: 'The Force' }));
 app.use(helmet.xssFilter());
-app.use(helmet.noCache());
+//app.use(helmet.noCache());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard());
 
